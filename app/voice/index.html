@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create and manage your local VoiceDraft Voice Profile.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f6f4ee">
+  <title>Voice Profile | VoiceDraft</title>
+</head>
+<body data-page="voice-profile">
+  <a class="skip-link" href="#main">Skip to Voice Profile</a>
+  <header class="site-header"><div class="header-inner"><a class="wordmark" href="/"><span class="wordmark-mark" aria-hidden="true">V</span><span>VoiceDraft</span></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="/app/">Editor</a><a href="/email-rewriter/">Email rewriter</a><a href="/linkedin-post-rewriter/">LinkedIn rewriter</a><a href="/pricing/">Pricing</a></nav><a class="button button-secondary header-cta" href="/app/"><i data-lucide="sparkles" aria-hidden="true"></i>Open editor</a></div></header>
+  <main id="main" class="voice-layout">
+    <section class="voice-copy">
+      <p class="eyebrow">Your writing, observed</p>
+      <h1>Build your Voice Profile</h1>
+      <p>Add writing that already sounds like you. VoiceDraft looks for practical patterns such as rhythm, directness, warmth, and contractions. The saved profile stays in this browser in the MVP.</p>
+      <form class="voice-form" data-voice-form>
+        <label for="voice-samples">Representative writing samples</label>
+        <textarea class="sample-input" id="voice-samples" data-samples maxlength="15000" placeholder="Paste an email, post, or other professional writing you already like. Separate multiple samples with a line containing ---." aria-describedby="sample-guidance"></textarea>
+        <div class="sample-meta" id="sample-guidance"><span>One sample works; three varied samples give a stronger signal.</span><span data-sample-count>0 / 15,000</span></div>
+        <div class="form-actions">
+          <button class="button button-primary" type="submit" data-analyze-profile><i data-lucide="sparkles" aria-hidden="true"></i>Analyze my voice</button>
+          <button class="button button-secondary" type="button" data-save-profile hidden><i data-lucide="check" aria-hidden="true"></i>Save profile</button>
+          <button class="button button-danger" type="button" data-delete-profile hidden><i data-lucide="trash-2" aria-hidden="true"></i>Delete profile</button>
+        </div>
+        <p class="voice-status" data-voice-status aria-live="polite"></p>
+      </form>
+    </section>
+    <aside class="profile-panel" aria-label="Voice Profile preview"><header><h2>Profile preview</h2></header><div class="profile-result" data-profile-result><p class="profile-empty">No Voice Profile is saved in this browser.</p></div></aside>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><p class="footer-copy">Your saved profile is local to this browser. Delete it here at any time.</p><nav class="footer-links" aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/">Home</a></nav></div></footer>
+  <script type="module" src="/src/voice.js"></script>
+</body>
+</html>

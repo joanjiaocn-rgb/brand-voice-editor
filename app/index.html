@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VoiceDraft writing workspace.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f6f4ee">
+  <title>Editor | VoiceDraft</title>
+</head>
+<body data-page="app">
+  <a class="skip-link" href="#main">Skip to editor</a>
+  <header class="site-header"><div class="header-inner"><a class="wordmark" href="/"><span class="wordmark-mark" aria-hidden="true">V</span><span>VoiceDraft</span></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="/app/" aria-current="page">Editor</a><a href="/email-rewriter/">Email</a><a href="/linkedin-post-rewriter/">LinkedIn</a><a href="/pricing/">Pricing</a></nav><a class="button button-secondary header-cta" href="/app/voice/"><i data-lucide="user-round-pen" aria-hidden="true"></i>Voice Profile</a></div></header>
+  <main id="main">
+    <section class="page-intro"><p class="eyebrow">Writing workspace</p><h1>Rewrite in your voice</h1><p>Choose the job, add the draft, and review the result before it leaves this screen.</p></section>
+    <section class="tool-shell" aria-label="Brand voice editor"><div class="rewrite-tool" data-rewrite-tool data-default-mode="email" data-state="empty"><div class="tool-bar"><div class="segmented" role="tablist" aria-label="Writing format"><button class="segment-button" type="button" role="tab" data-mode="email">Email</button><button class="segment-button" type="button" role="tab" data-mode="linkedin">LinkedIn</button></div><a class="profile-state" href="/app/voice/" data-profile-state><i data-lucide="user-round-pen" aria-hidden="true"></i><span>Default voice</span></a></div><form><div class="tool-grid"><section class="editor-pane source-pane"><div class="pane-head"><h2>Your draft</h2><span class="character-count" data-count>0 / 5,000</span></div><div class="editor-body"><textarea class="draft-input" data-source maxlength="5000" aria-label="Draft to rewrite" placeholder="Paste an email or LinkedIn draft here..."></textarea></div><div class="context-row"><label for="app-context">Audience and goal</label><input class="context-input" id="app-context" data-context placeholder="Example: A warm follow-up to a prospective client"></div></section><section class="editor-pane result-pane" aria-live="polite"><div class="pane-head"><h2>Rewrite</h2><span class="pane-status" data-status>Ready when you are</span></div><div class="review-warning" data-warning hidden><strong>Review these details</strong><ul data-warning-list></ul></div><div class="editor-body result-body" data-result>Your rewrite will appear here, with important detail changes flagged for review.</div></section></div><div class="tool-actions"><div class="change-tags" data-tags></div><button class="button button-quiet" type="button" data-adjustment="shorter" hidden>Shorter</button><button class="button button-quiet" type="button" data-adjustment="more_direct" hidden>More direct</button><button class="button button-quiet" type="button" data-adjustment="more_conversational" hidden>More conversational</button><button class="button button-quiet" type="button" data-copy hidden><i data-lucide="copy" aria-hidden="true"></i><span>Copy</span></button><button class="button button-quiet" type="button" data-retry hidden><i data-lucide="refresh-cw" aria-hidden="true"></i><span>Try again</span></button><button class="button button-primary" type="submit" data-submit><i data-lucide="wand-sparkles" aria-hidden="true"></i>Rewrite in my voice</button></div></form></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><p class="footer-copy">VoiceDraft MVP writing workspace.</p><nav class="footer-links"><a href="/app/voice/">Voice Profile</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/">Home</a></nav></div></footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

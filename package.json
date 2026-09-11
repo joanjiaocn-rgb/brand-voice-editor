@@ -1,0 +1,13 @@
+{
+  "name": "brand-voice-editor",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "deploy": "npm run build && npx --yes wrangler@4.35.0 deploy --no-bundle",
+    "check": "npm run build && node scripts/verify.mjs"
+  }
+}

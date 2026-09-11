@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "service": "VoiceDraft MVP API",
+  "version": "1.0.0",
+  "basePath": "/api",
+  "persistence": {
+    "rawDrafts": false,
+    "rawOutputs": false,
+    "voiceSamples": false,
+    "voiceProfile": "browser-local-storage"
+  },
+  "endpoints": {
+    "POST /rewrite": {
+      "authentication": "none-mvp",
+      "rateLimit": "best-effort 8 requests per source per minute; account-level protection pending",
+      "request": {
+        "type": "object",
+        "required": ["mode", "source_text"],
+        "properties": {
+          "mode": { "enum": ["email", "linkedin"] },
+          "source_text": { "type": "string", "minLength": 20, "maxLength": 5000 },
+          "context": {
+            "type": "object",
+            "properties": {
+              "audience": { "type": ["string", "null"], "maxLength": 240 },
+              "goal": { "type": ["string", "null"], "maxLength": 240 },
+              "relationship": { "type": ["string", "null"], "maxLength": 120 }
+            }
+          },
+          "voice_profile": { "type": ["object", "null"] },
+          "adjustment": { "enum": ["none", "shorter", "more_direct", "more_conversational"] }
+        }
+      },
+      "success": {
+        "status": 200,
+        "properties": ["request_id", "rewritten_text", "change_tags", "protected_token_changes", "meaning_risk", "review_notes", "model_version", "prompt_version"]
+      },
+      "errors": {
+        "400": "invalid JSON, length, or input",
+        "429": "best-effort rate limit reached",
+        "502": "AI provider or response validation failure",
+        "503": "AI binding unavailable"
+      }
+    },
+    "POST /voice/analyze": {
+      "authentication": "none-mvp",
+      "rateLimit": "best-effort 3 requests per source per minute; account-level protection pending",
+      "request": {
+        "type": "object",
+        "required": ["samples"],
+        "properties": {
+          "samples": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": { "type": "string" }
+          }
+        }
+      },
+      "success": {
+        "status": 200,
+        "properties": ["schema_version", "traits", "confidence"]
+      },
+      "errors": {
+        "400": "sample count or total length invalid",
+        "429": "best-effort rate limit reached",
+        "502": "AI provider or response validation failure",
+        "503": "AI binding unavailable"
+      }
+    },
+    "GET /health": {
+      "authentication": "none",
+      "success": { "status": 200, "properties": ["ok", "ai", "model"] }
+    }
+  },
+  "productionGates": [
+    "verify the configured Workers AI model in the target Cloudflare account",
+    "set account-level AI quotas or edge rate limits",
+    "confirm provider processing and retention disclosure",
+    "run live protected-token and malformed-output tests"
+  ]
+}
