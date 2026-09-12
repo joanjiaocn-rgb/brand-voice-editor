@@ -1,6 +1,6 @@
 # VoiceDraft Design Handoff v0.2
 
-Status: NEEDS_REVIEW. The full public and app route set now uses the quiet writing desk direction below. Visual QA screenshots are still required before it can be promoted to Design DONE.
+Status: NEEDS_REVIEW. The full public and app route set uses the quiet writing desk direction below. The homepage CTA and input-visibility correction passed visual QA at 1440 x 900 and 390 x 844; user review is still required before Design DONE.
 
 ## Visual Style Rationale
 
@@ -56,6 +56,13 @@ Homepage refresh additions:
 --hero-blue: #4a9fc0;
 --hero-cream: #fbf3e8;
 ```
+
+Visibility correction:
+
+- The homepage hero is intentionally compact so the cream writing surface and editor are visible in the first viewport.
+- A primary `Start editing` action scrolls directly to the writing desk; navigation and the closing CTA use the same target.
+- The source textarea uses a persistent two-pixel blue-gray border, stronger placeholder text, and a dark focus state so it reads as an input before interaction.
+- Primary actions use dark blue-green (`#24566b`) with white text and a minimum 48px control height; the editor submit action is at least 156px wide on desktop and full-width on mobile.
 
 ### Typography
 
@@ -157,6 +164,6 @@ Homepage refresh additions:
 - Copy placement: specified.
 - Asset sources: specified.
 - Stitch/Figma source: missing.
-- Rendered screenshot QA: pending.
+- Rendered screenshot QA: homepage visibility correction passed at 1440 x 900 and 390 x 844; broader route review remains pending.
 
 [NEEDS_REVIEW]
