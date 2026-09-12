@@ -23,11 +23,11 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 
 ### `/`
 
-- Title: Brand Voice Editor for Email and LinkedIn | VoiceDraft
-- Meta: Turn stiff drafts into writing that sounds like you. Edit emails and LinkedIn posts while keeping the meaning and important details intact.
-- Eyebrow: VoiceDraft
-- H1: Turn stiff drafts into writing that sounds like you.
-- Subhead: Edit emails and LinkedIn posts without flattening your voice. Keep the meaning and important details, then make the final call yourself.
+- Title: AI Humanizer for Email and LinkedIn | VoiceDraft
+- Meta: AI humanizer for emails and LinkedIn posts that makes AI-assisted writing sound like you while keeping meaning and important details intact.
+- Eyebrow: AI humanizer for work
+- H1: Make AI writing sound like you.
+- Subhead: Humanize emails and LinkedIn posts without flattening your voice. Keep the meaning and important details, then make the final call yourself.
 - Primary CTA: Start editing
 - Secondary CTA: See an example
 - H2: Start with a real message
