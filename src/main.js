@@ -94,7 +94,7 @@ function initializeRewriteTool(root) {
       return;
     }
 
-    setState("loading", "Reading the draft and matching the delivery...");
+    setState("loading", "Comparing the draft and preparing an edit...");
     submit.disabled = true;
     lastRequest = {
       mode,
@@ -138,7 +138,7 @@ function initializeRewriteTool(root) {
     result.textContent = lastOutput;
     result.removeAttribute("aria-busy");
     root.dataset.state = "success";
-    status.textContent = data.local_preview ? "Local preview only" : "Rewrite ready";
+    status.textContent = data.local_preview ? "Preview only" : "Edited version ready";
     tags.innerHTML = "";
     for (const tag of data.change_tags || []) {
       const element = document.createElement("span");
@@ -210,8 +210,8 @@ function updateProfileState(element) {
   if (!element) return;
   const profile = getProfile();
   element.innerHTML = profile
-    ? '<i data-lucide="check" aria-hidden="true"></i><span>Voice Profile ready</span>'
-    : '<i data-lucide="user-round-pen" aria-hidden="true"></i><span>Default voice</span>';
+    ? '<i data-lucide="check" aria-hidden="true"></i><span>Voice notes ready</span>'
+    : '<i data-lucide="notebook-pen" aria-hidden="true"></i><span>Add voice notes</span>';
   element.classList.toggle("is-ready", Boolean(profile));
   refreshIcons();
 }
