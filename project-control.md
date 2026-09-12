@@ -18,13 +18,16 @@
 | Frontend | LOCAL_READY | Build, route, link, and SEO automation pass; screenshot QA blocked by host approval failure |
 | Worker AI | REVIEW | Code and API contract pass syntax checks; live account/model test pending |
 | Compliance | REVIEW | Privacy/Terms are MVP drafts, not legal advice |
-| GitHub | BLOCKED_AUTH | Empty repository exists at `joanjiaocn-rgb/brand-voice-editor`; push failed because no authenticated GitHub credential is available |
-| Cloudflare | BLOCKED_SETUP | Authenticated account/API token unavailable |
+| GitHub | PUSHED | `main` at `df8ee326c6cd7eac7d2a2aacfe257f51458700ae`; local and remote verified equal |
+| Cloudflare | BLOCKED_SETUP | GitHub Action `34683583879` built successfully; Wrangler deploy step skipped because repository secrets are missing |
 | Production URL | NOT_STARTED | Deploy after GitHub and Cloudflare setup |
 
 ## Local verification evidence
 
 - `npm.cmd run check`: PASS on 2026-09-12.
+- GitHub `main` commit equality: PASS at `df8ee326c6cd7eac7d2a2aacfe257f51458700ae`.
+- GitHub Actions build: PASS, run `34683583879`.
+- Cloudflare deploy: SKIPPED because `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` are not configured as repository secrets.
 - 10 HTML routes built and internal links verified.
 - Core public routes returned 200; an unknown route returned 404.
 - Worker, client, profile, build, and server scripts passed Node syntax checks.
