@@ -1,6 +1,6 @@
-# VoiceDraft Design Handoff v0.1
+# VoiceDraft Design Handoff v0.2
 
-Status: NEEDS_REVIEW. The homepage now uses the quiet writing desk direction below. Visual QA screenshots are still required before it can be promoted to Design DONE.
+Status: NEEDS_REVIEW. The full public and app route set now uses the quiet writing desk direction below. Visual QA screenshots are still required before it can be promoted to Design DONE.
 
 ## Visual Style Rationale
 
@@ -12,6 +12,8 @@ Status: NEEDS_REVIEW. The homepage now uses the quiet writing desk direction bel
 - The editor is framed as a writing desk: original draft, edited version, and details to review.
 - Fit: users are consultants and agency owners; the product should feel like careful professional editing, not an AI dashboard.
 - Competitive reference: the sparse, centered hero and simple cream tool area seen in Enji-style utility pages, with stronger editorial typography and less SaaS chrome.
+
+The two supplied references were treated as evidence of a useful restraint, not as templates to copy: centered explanation, generous white space, one clear action, and a simple tool surface. The VoiceDraft version removes their AI badge/robot treatment and keeps the product promise focused on editing.
 
 ### Direction B: Precision document utility
 
@@ -74,7 +76,7 @@ Homepage refresh additions:
 
 ## Desktop first viewport: 1440 x 900
 
-1. An 80px white header with wordmark left, four quiet links, and `Voice notes` action right.
+1. An 82px white header with wordmark left, three quiet links, and `Voice notes` action right.
 2. A centered white hero with a restrained document line illustration offset to the right.
 3. A warm cream work surface with a short instruction line and a genuine framed workspace, not a decorative card.
 4. Tool header contains a segmented Email/LinkedIn control, profile state, and one context toggle.
@@ -124,6 +126,12 @@ Homepage refresh additions:
 - Inline diff uses underline/strike plus text labels, never color alone.
 - FAQ uses native disclosure behavior.
 - Mobile menu closes on navigation and Escape.
+
+## Route consistency
+
+- `/`, `/email-rewriter/`, `/linkedin-post-rewriter/`, `/ai-humanizer/`, and `/app/` use the same writing-desk shell, document labels, blue action, and original/edited vocabulary.
+- `/app/voice/` uses `Writing notes` and `Make style notes`; it intentionally avoids celebratory profile or AI-analysis language.
+- `/pricing/`, `/privacy/`, `/terms/`, and `404` use the same white/navy/cream system without introducing a second SaaS visual language.
 
 ## Asset inventory
 
