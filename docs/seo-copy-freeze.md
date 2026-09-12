@@ -6,9 +6,9 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 
 - Working brand: VoiceDraft
 - Category: AI brand voice editor
-- Core promise: Make AI-assisted writing sound like you.
+- Core promise: Turn stiff drafts into writing that sounds like you.
 - Primary audience: independent consultants and small agency owners in English-speaking Western markets.
-- Primary action: Rewrite a draft.
+- Primary action: Start editing.
 - Differentiation: a reusable personal Voice Profile, mode-aware editing, visible changes, and fact-preservation warnings.
 
 ## Prohibited claims
@@ -23,16 +23,17 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 
 ### `/`
 
-- Title: AI Brand Voice Editor for Emails and LinkedIn | VoiceDraft
-- Meta: Rewrite AI-assisted emails and LinkedIn posts in a voice that sounds like you. Keep the meaning, see important changes, and save your style.
-- H1: AI brand voice editor
-- Subhead: Turn stiff AI drafts into clear emails and LinkedIn posts that sound like you, without rebuilding the same prompt every time.
-- Primary CTA: Rewrite a draft
-- Secondary CTA: Build my Voice Profile
-- H2: Start with the draft you already have
+- Title: Brand Voice Editor for Email and LinkedIn | VoiceDraft
+- Meta: Turn stiff drafts into writing that sounds like you. Edit emails and LinkedIn posts while keeping the meaning and important details intact.
+- Eyebrow: VoiceDraft
+- H1: Turn stiff drafts into writing that sounds like you.
+- Subhead: Edit emails and LinkedIn posts without flattening your voice. Keep the meaning and important details, then make the final call yourself.
+- Primary CTA: Start editing
+- Secondary CTA: See an example
+- H2: Start with a real message
 - H2: Your voice is more than a tone setting
 - H2: Keep the facts. Change the delivery.
-- H2: One profile, two everyday writing jobs
+- H2: One voice across the work people actually read
 - H2: Questions before you rewrite
 
 ### `/ai-humanizer/`
