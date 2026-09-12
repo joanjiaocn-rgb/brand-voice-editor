@@ -1,16 +1,17 @@
 # VoiceDraft Design Handoff v0.1
 
-Status: NEEDS_REVIEW. This is an implementation-ready design specification produced without Stitch/Figma credentials. Visual QA screenshots are required before it can be promoted to Design DONE.
+Status: NEEDS_REVIEW. The homepage now uses the quiet writing desk direction below. Visual QA screenshots are still required before it can be promoted to Design DONE.
 
 ## Visual Style Rationale
 
-### Direction A: Editorial proof desk - selected
+### Direction A: Quiet editorial desk - selected
 
-- Paper-white base, ink typography, coral action, teal preservation indicators, yellow annotations.
+- White paper hero, warm cream work surface, navy ink, and a single calm blue action color.
 - A restrained serif display face paired with a practical system sans.
-- The editor and visible revision marks are the visual identity.
-- Fit: users are consultants and agency owners; the product should feel like careful professional editing, not AI spectacle.
-- SERP distinction: avoids the common purple gradient, centered slogan, floating mockup, and three feature cards used by generic AI writing tools.
+- A small document-and-pencil line motif replaces AI sparkle or robot imagery.
+- The editor is framed as a writing desk: original draft, edited version, and details to review.
+- Fit: users are consultants and agency owners; the product should feel like careful professional editing, not an AI dashboard.
+- Competitive reference: the sparse, centered hero and simple cream tool area seen in Enji-style utility pages, with stronger editorial typography and less SaaS chrome.
 
 ### Direction B: Precision document utility
 
@@ -46,6 +47,14 @@ Status: NEEDS_REVIEW. This is an implementation-ready design specification produ
 
 The palette deliberately spans warm, green, yellow, and neutral families so the site does not read as a one-hue AI product.
 
+Homepage refresh additions:
+
+```css
+--hero-ink: #172b42;
+--hero-blue: #4a9fc0;
+--hero-cream: #fbf3e8;
+```
+
 ### Typography
 
 - Display: `Iowan Old Style`, `Palatino Linotype`, `Book Antiqua`, `Georgia`, serif.
@@ -65,9 +74,9 @@ The palette deliberately spans warm, green, yellow, and neutral families so the 
 
 ## Desktop first viewport: 1440 x 900
 
-1. A 64px header with wordmark left, three task links, and `Voice Profile` action right.
-2. An intro band with category H1 and two-line supporting copy. Keep it compact so the editor and a hint of the next section remain visible.
-3. The primary tool spans the content width and is a genuine framed workspace, not a decorative card.
+1. An 80px white header with wordmark left, four quiet links, and `Voice notes` action right.
+2. A centered white hero with a restrained document line illustration offset to the right.
+3. A warm cream work surface with a short instruction line and a genuine framed workspace, not a decorative card.
 4. Tool header contains a segmented Email/LinkedIn control, profile state, and one context toggle.
 5. Editor body uses two equal tracks. Source has textarea and count; result has semantic empty/loading/success/warning states.
 6. Footer actions stay fixed within the tool footprint so generation never shifts the page.
