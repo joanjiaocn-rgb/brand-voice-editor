@@ -18,7 +18,7 @@
 | Frontend | LOCAL_READY | Build, route, link, and SEO automation pass; screenshot QA blocked by host approval failure |
 | Worker AI | REVIEW | Code and API contract pass syntax checks; live account/model test pending |
 | Compliance | REVIEW | Privacy/Terms are MVP drafts, not legal advice |
-| GitHub | PUSHED | `main` at `df8ee326c6cd7eac7d2a2aacfe257f51458700ae`; local and remote verified equal |
+| GitHub | PUSH_PENDING | Local `main` is at `3a1a79e235e06ef3b9a7505270c4e92a4ed7e61b`; `origin/main` is still at `d85e8f1dc4359e37d7d5651859d3a5eae8c00a14` because Git Credential Manager could not obtain a GitHub credential |
 | Cloudflare | BLOCKED_SETUP | GitHub Action `34683583879` built successfully; Wrangler deploy step skipped because repository secrets are missing |
 | Production URL | REVIEW | `https://brandvoice.space/`; attach the custom domain to the Worker and run post-DNS smoke tests |
 
