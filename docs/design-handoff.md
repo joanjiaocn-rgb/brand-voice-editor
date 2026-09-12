@@ -142,7 +142,8 @@ Visibility correction:
 
 ## Asset inventory
 
-- Text-labeled controls in the local build. Lucide icons are deferred because the dependency download was unavailable in the build environment.
+- The wordmark uses a blue square with the Lucide `pen-line` outline embedded as a CSS image, so it remains visible after the static build removes unresolved icon placeholders.
+- Tool controls remain text-labeled in the local build. Other Lucide icons are deferred because the dependency download was unavailable in the build environment.
 - The product editor itself is the primary visual evidence.
 - No stock AI images, robot art, gradients, generated avatars, or unknown third-party assets.
 - Before/after copy examples are authored product content, not customer data.

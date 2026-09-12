@@ -1,6 +1,6 @@
 # VoiceDraft Cloudflare Backend Handoff
 
-Status: BLOCKED_SETUP for production. The Worker and machine-readable API contract are implemented, but Cloudflare credentials and live binding tests are unavailable.
+Status: NEEDS_REVIEW. The production AI binding is present. A deprecated model caused rewrite requests to return 502; the replacement model and response-parser fallback are implemented locally and require post-deployment verification.
 
 ## Architecture
 
@@ -33,11 +33,13 @@ Status: BLOCKED_SETUP for production. The Worker and machine-readable API contra
 - The in-memory rate limit is best effort and is not a global quota mechanism.
 - Production needs an account-level quota, Cloudflare edge rate limiting, or persistent usage ledger before broad promotion.
 
-## Live test blockers
+## Production verification
 
-- `CLOUDFLARE_API_TOKEN` or an authenticated Wrangler session is missing.
-- Target account ID is missing.
-- The selected Workers AI model has not been verified in the target account.
+- `GET /api/health` returned 200 with `ai: true` on 2026-09-12.
+- `POST /api/rewrite` reproduced a 502 while the Worker used deprecated model `@cf/meta/llama-3.1-8b-instruct`.
+- Cloudflare marks that model deprecated as of 2026-05-30.
+- The Worker now targets `@cf/meta/llama-3.3-70b-instruct-fp8-fast`; local contract tests cover fenced JSON and malformed JSON/plain-text fallback.
+- `CLOUDFLARE_API_TOKEN` and account ID are not available to the local automation environment, so the replacement model still needs one live rewrite after deployment.
 - Provider retention settings and final Privacy text are not confirmed.
 
-[BLOCKED_SETUP]
+[NEEDS_REVIEW]

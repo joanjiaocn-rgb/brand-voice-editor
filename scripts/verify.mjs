@@ -40,10 +40,15 @@ for (const file of htmlFiles) {
   }
 }
 
-const worker = await readFile(join(root, "src", "worker.js"), "utf8");
-if (!worker.includes("/sitemap.xml")) failures.push("worker: missing sitemap route");
-if (!worker.includes('rel=\"canonical\"')) failures.push("worker: missing canonical injection");
-if (!worker.includes("no-store")) failures.push("worker: API responses must be no-store");
+const workerSource = await readFile(join(root, "src", "worker.js"), "utf8");
+if (!workerSource.includes("/sitemap.xml")) failures.push("worker: missing sitemap route");
+if (!workerSource.includes('rel=\"canonical\"')) failures.push("worker: missing canonical injection");
+if (!workerSource.includes("no-store")) failures.push("worker: API responses must be no-store");
+if (workerSource.includes("@cf/meta/llama-3.1-8b-instruct")) failures.push("worker: deprecated AI model configured");
+
+const worker = (await import("../src/worker.js")).default;
+await verifyRewriteResponse(worker, '```json\n{"rewritten_text":"Hi Maya, the draft is ready.","change_tags":["clarity"],"review_notes":[]}\n```', "fenced JSON");
+await verifyRewriteResponse(worker, "Hi Maya, please review {the landing page} by Thursday.", "plain text with braces");
 
 if (failures.length) {
   console.error(failures.join("\n"));
@@ -59,4 +64,21 @@ async function walk(directory) {
     return entry.isDirectory() ? walk(path) : [path];
   }));
   return nested.flat();
+}
+
+async function verifyRewriteResponse(worker, modelResponse, label) {
+  const request = new Request("https://example.test/api/rewrite", {
+    method: "POST",
+    headers: { "content-type": "application/json", "CF-Connecting-IP": `verify-${label}` },
+    body: JSON.stringify({
+      mode: "email",
+      source_text: "Hi Maya, the landing page is ready for review by Thursday.",
+      context: {},
+      voice_profile: null,
+      adjustment: "none"
+    })
+  });
+  const response = await worker.fetch(request, { AI: { run: async () => ({ response: modelResponse }) } });
+  const body = await response.json();
+  if (!response.ok || !body.rewritten_text) failures.push(`worker: ${label} model response returned ${response.status}`);
 }

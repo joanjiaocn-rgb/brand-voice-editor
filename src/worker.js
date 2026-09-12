@@ -1,4 +1,4 @@
-const MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
 const MAX_SOURCE_LENGTH = 5000;
 const rateBuckets = new Map();
 const PUBLIC_ROUTES = new Set([
@@ -192,14 +192,22 @@ Return JSON only with this shape: {"rewritten_text":"string","change_tags":["cla
 function parseModelJson(value) {
   if (value && typeof value === "object" && !Array.isArray(value)) return value;
   const text = cleanString(value).replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
+
   try {
     return JSON.parse(text);
   } catch {
     const start = text.indexOf("{");
     const end = text.lastIndexOf("}");
-    if (start >= 0 && end > start) return JSON.parse(text.slice(start, end + 1));
-    return { rewritten_text: text, change_tags: ["clarity"], review_notes: [] };
+    if (start >= 0 && end > start) {
+      try {
+        return JSON.parse(text.slice(start, end + 1));
+      } catch {
+        // Fall through to a usable plain-text rewrite when model JSON is malformed.
+      }
+    }
   }
+
+  return { rewritten_text: text, change_tags: ["clarity"], review_notes: [] };
 }
 
 function compareProtectedTokens(source, output) {

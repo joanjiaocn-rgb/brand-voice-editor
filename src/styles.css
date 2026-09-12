@@ -750,7 +750,6 @@ body[data-page="home"] .site-header {
 
 body[data-page="home"] .header-inner { max-width: 1240px; }
 body[data-page="home"] .wordmark { letter-spacing: 0; }
-body[data-page="home"] .wordmark-mark { width: 30px; height: 30px; border-radius: 50%; background: #1f3a56; border-color: #1f3a56; font-family: var(--sans); font-size: 15px; }
 body[data-page="home"] .desktop-nav { gap: 30px; font-weight: 650; }
 body[data-page="home"] .header-cta { border-color: #1f3a56; }
 
@@ -837,13 +836,28 @@ body[data-page="home"] .final-cta { background: #ffffff; }
   --yellow: #e2b34b;
   --yellow-soft: #fbf4e6;
   --danger: #a43b32;
+  --brand-blue: #2f6f96;
 }
 
 body { background: #ffffff; color: var(--ink); }
 .site-header { height: 82px; background: #ffffff; border-bottom-color: #e6eaed; }
 .header-inner { max-width: 1200px; padding-left: 28px; padding-right: 28px; }
 .wordmark { gap: 8px; font-family: var(--display); font-size: 23px; letter-spacing: 0; }
-.wordmark-mark { width: 18px; height: 18px; border: 0; border-radius: 50%; background: var(--ink); color: transparent; font-size: 0; }
+.wordmark-mark {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--brand-blue);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='white'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Cpath%20d='M12%2020h9'/%3E%3Cpath%20d='M16.5%203.5a2.121%202.121%200%200%201%203%203L7%2019l-4%201%201-4Z'/%3E%3Cpath%20d='m15%205%203%203'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  color: transparent;
+  font-size: 0;
+  box-shadow: inset 0 0 0 1px rgba(20, 40, 61, .12);
+}
 .desktop-nav { gap: 28px; color: #2e4355; font-weight: 650; }
 .desktop-nav a:hover { color: var(--coral-dark); }
 .header-cta { min-height: 44px; border-radius: 4px; }
@@ -855,7 +869,7 @@ body { background: #ffffff; color: var(--ink); }
 .button-quiet { background: #ffffff; border-color: #d6dee3; }
 
 body[data-page="home"] .site-header { height: 82px; }
-body[data-page="home"] .wordmark-mark { background: var(--ink); }
+body[data-page="home"] .wordmark-mark { background-color: var(--brand-blue); }
 body[data-page="home"] .header-cta { border-color: var(--ink); }
 body[data-page="home"] .home-hero { min-height: 380px; padding: 64px 24px 70px; background: #ffffff; }
 body[data-page="home"] .hero-copy { max-width: 900px; }
