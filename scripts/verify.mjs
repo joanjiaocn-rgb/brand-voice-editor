@@ -44,9 +44,11 @@ const workerSource = await readFile(join(root, "src", "worker.js"), "utf8");
 if (!workerSource.includes("/sitemap.xml")) failures.push("worker: missing sitemap route");
 if (!workerSource.includes('rel=\"canonical\"')) failures.push("worker: missing canonical injection");
 if (!workerSource.includes("no-store")) failures.push("worker: API responses must be no-store");
+if (!workerSource.includes('SITE_ORIGIN = "https://brandvoice.space"')) failures.push("worker: production site origin is not configured");
 if (workerSource.includes("@cf/meta/llama-3.1-8b-instruct")) failures.push("worker: deprecated AI model configured");
 
 const worker = (await import("../src/worker.js")).default;
+await verifySiteOrigin(worker);
 await verifyRewriteResponse(worker, '```json\n{"rewritten_text":"Hi Maya, the draft is ready.","change_tags":["clarity"],"review_notes":[]}\n```', "fenced JSON");
 await verifyRewriteResponse(worker, "Hi Maya, please review {the landing page} by Thursday.", "plain text with braces");
 
@@ -81,4 +83,14 @@ async function verifyRewriteResponse(worker, modelResponse, label) {
   const response = await worker.fetch(request, { AI: { run: async () => ({ response: modelResponse }) } });
   const body = await response.json();
   if (!response.ok || !body.rewritten_text) failures.push(`worker: ${label} model response returned ${response.status}`);
+}
+
+async function verifySiteOrigin(worker) {
+  const sitemapResponse = await worker.fetch(new Request("https://temporary.workers.dev/sitemap.xml"));
+  const sitemap = await sitemapResponse.text();
+  if (!sitemapResponse.ok || !sitemap.includes("https://brandvoice.space/")) failures.push("worker: sitemap does not use brandvoice.space");
+
+  const robotsResponse = await worker.fetch(new Request("https://temporary.workers.dev/robots.txt"));
+  const robots = await robotsResponse.text();
+  if (!robotsResponse.ok || !robots.includes("Sitemap: https://brandvoice.space/sitemap.xml")) failures.push("worker: robots.txt does not use brandvoice.space");
 }

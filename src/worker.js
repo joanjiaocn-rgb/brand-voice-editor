@@ -1,4 +1,5 @@
 const MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast";
+const SITE_ORIGIN = "https://brandvoice.space";
 const MAX_SOURCE_LENGTH = 5000;
 const rateBuckets = new Map();
 const PUBLIC_ROUTES = new Set([
@@ -32,11 +33,11 @@ export default {
     }
 
     if (url.pathname === "/sitemap.xml") {
-      return sitemap(url.origin);
+      return sitemap(SITE_ORIGIN);
     }
 
     if (url.pathname === "/robots.txt") {
-      return new Response(`User-agent: *\nAllow: /\nDisallow: /app/\nSitemap: ${url.origin}/sitemap.xml\n`, {
+      return new Response(`User-agent: *\nAllow: /\nDisallow: /app/\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`, {
         headers: { "content-type": "text/plain; charset=utf-8" }
       });
     }
@@ -45,7 +46,7 @@ export default {
     if (!isHtml(response)) return response;
 
     const canonicalPath = normalizeCanonicalPath(url.pathname);
-    const canonical = `${url.origin}${canonicalPath}`;
+    const canonical = `${SITE_ORIGIN}${canonicalPath}`;
     return new HTMLRewriter()
       .on("head", {
         element(element) {

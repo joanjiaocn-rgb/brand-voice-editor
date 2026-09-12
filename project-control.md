@@ -20,7 +20,7 @@
 | Compliance | REVIEW | Privacy/Terms are MVP drafts, not legal advice |
 | GitHub | PUSHED | `main` at `df8ee326c6cd7eac7d2a2aacfe257f51458700ae`; local and remote verified equal |
 | Cloudflare | BLOCKED_SETUP | GitHub Action `34683583879` built successfully; Wrangler deploy step skipped because repository secrets are missing |
-| Production URL | NOT_STARTED | Deploy after GitHub and Cloudflare setup |
+| Production URL | REVIEW | `https://brandvoice.space/`; attach the custom domain to the Worker and run post-DNS smoke tests |
 
 ## Local verification evidence
 

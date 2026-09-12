@@ -2,6 +2,8 @@
 
 VoiceDraft is an editor-first web MVP for rewriting AI-assisted emails and LinkedIn posts in a reusable personal voice. The working product name and commercial pricing are provisional.
 
+Production site: https://brandvoice.space/
+
 ## What is implemented
 
 - Responsive homepage and task-specific SEO pages.
@@ -37,6 +39,8 @@ The Worker uses:
 
 - `AI` Workers AI binding.
 - `ASSETS` static assets binding generated from `dist/`.
+
+The Worker uses `https://brandvoice.space` as the canonical site origin for `canonical`, `robots.txt`, and `sitemap.xml`. The custom domain must also be attached to the Worker in Cloudflare before it serves traffic.
 
 Manual deploy after Cloudflare authentication:
 

@@ -5,6 +5,7 @@ Status: NEEDS_REVIEW. The production AI binding is present. A deprecated model c
 ## Architecture
 
 - Cloudflare Worker handles AI endpoints, sitemap, robots, and dynamic canonical tags.
+- `https://brandvoice.space` is the configured canonical site origin; requests through the temporary `workers.dev` hostname still emit the custom-domain canonical and sitemap URLs.
 - Static assets are served through the Worker Assets binding from `dist/`.
 - Cloudflare Workers AI is bound as `AI`.
 - No D1, R2, KV, authentication, subscriptions, or server-side writing history exists in this MVP slice.
