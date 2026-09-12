@@ -39,19 +39,19 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 ### `/ai-humanizer/`
 
 - Title: AI Humanizer for Professional Writing | VoiceDraft
-- Meta: Humanize AI-written emails and LinkedIn posts while preserving your meaning, details, and personal voice.
-- H1: An AI humanizer built for work that sounds like you
-- Subhead: Rewrite stiff, generic drafts for real professional conversations. No detector-bypass promises and no invented stories.
+- Meta: Humanize AI writing for emails and LinkedIn posts while preserving your meaning, facts, and personal voice.
+- H1: AI humanizer for professional writing
+- Subhead: Make AI-assisted emails and LinkedIn posts sound clear, personal, and ready to send. Keep your meaning, facts, and point of view in your hands.
 - CTA: Humanize my draft
-- H2: What VoiceDraft changes
-- H2: What it works to preserve
+- H2: Humanize AI writing without flattening your voice
+- H2: Humanize the messages you actually send
 - H2: Humanize the writing, not the facts
 - H2: Common questions about AI humanizing
 
 ### `/email-rewriter/`
 
-- Title: AI Email Rewriter for Clear, Natural Messages | VoiceDraft
-- Meta: Rewrite client and prospect emails to sound clear, direct, and natural while keeping names, numbers, links, and commitments visible.
+- Title: AI Email Humanizer and Rewriter | VoiceDraft
+- Meta: Humanize AI-written client and prospect emails to sound clear, direct, and natural while keeping names, numbers, links, and commitments visible.
 - H1: Rewrite emails without losing your voice
 - Subhead: Polish client, prospect, and partnership emails in your own style, with important detail changes flagged for review.
 - CTA: Rewrite my email
@@ -62,8 +62,8 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 
 ### `/linkedin-post-rewriter/`
 
-- Title: LinkedIn Post Rewriter That Keeps Your Voice | VoiceDraft
-- Meta: Reshape an AI-assisted LinkedIn draft without flattening your opinion, rhythm, or point of view.
+- Title: AI LinkedIn Post Humanizer and Rewriter | VoiceDraft
+- Meta: Humanize AI-assisted LinkedIn posts without flattening your opinion, rhythm, or point of view.
 - H1: Rewrite LinkedIn posts without losing your point of view
 - Subhead: Strengthen the opening and flow while keeping the argument, experience, and voice yours.
 - CTA: Rewrite my post
