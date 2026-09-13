@@ -81,6 +81,18 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 - CTA: Try the editor
 - Disclosure: Paid plan price and included usage are not yet finalized.
 
+### `/about/`
+
+- Title: About VoiceDraft | AI Humanizer for Professional Writing
+- Meta: About VoiceDraft, an AI humanizer for professional emails and LinkedIn posts.
+- H1: A practical editing desk for work writing
+
+### `/contact/`
+
+- Title: Contact VoiceDraft | Product Feedback and Support
+- Meta: Contact VoiceDraft with product feedback, privacy questions, or support requests.
+- H1: Questions, feedback, or a privacy request
+
 ## Shared product copy
 
 - Input label: Your draft
@@ -119,5 +131,7 @@ The MVP does not intentionally persist draft or output text on the application s
 - Use `SoftwareApplication` on tool pages.
 - Use `FAQPage` only where the matching FAQ is visibly rendered.
 - Do not use ratings, review count, or offer price until supported by real data.
+- Public pages also receive generated `WebPage` and `Organization` schema with the About/Contact routes, plus OG/Twitter and date-modified metadata at build time.
+- `/llms.txt` is a machine-readable summary of the product, public routes, limits, and prohibited claims.
 
 [NEEDS_REVIEW]

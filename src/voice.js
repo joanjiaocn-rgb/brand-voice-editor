@@ -24,6 +24,7 @@ form?.addEventListener("submit", async (event) => {
 
   setStatus("Looking for observable writing patterns...", "loading");
   analyzeButton.disabled = true;
+  track("profile_analysis_submitted", { sample_count: splitSamples(content).length });
   try {
     const response = await fetch("/api/voice/analyze", {
       method: "POST",
@@ -35,13 +36,16 @@ form?.addEventListener("submit", async (event) => {
     pendingProfile = data;
     renderProfile(data);
     setStatus("Review the profile before you save it.", "success");
+    track("profile_analysis_succeeded", { confidence: data.confidence || "unknown" });
   } catch (error) {
     if (isLocalPreview()) {
       pendingProfile = createLocalProfile(content);
       renderProfile(pendingProfile);
       setStatus("Local preview profile. Cloudflare AI will analyze live samples after deployment.", "warning");
+      track("profile_analysis_succeeded", { confidence: "low", local_preview: true });
     } else {
       setStatus(error.message || "The profile could not be created. Your sample is still here.", "error");
+      track("profile_analysis_failed", { error_code: "request_failed" });
     }
   } finally {
     analyzeButton.disabled = false;
@@ -52,6 +56,7 @@ saveButton?.addEventListener("click", () => {
   if (!pendingProfile) return;
   localStorage.setItem(VOICE_KEY, JSON.stringify(pendingProfile));
   setStatus("Voice Profile saved in this browser.", "success");
+  track("profile_saved");
   saveButton.disabled = true;
   deleteButton.hidden = false;
 });
@@ -63,6 +68,7 @@ deleteButton?.addEventListener("click", () => {
   deleteButton.hidden = true;
   saveButton.hidden = true;
   setStatus("Voice Profile deleted.", "success");
+  track("profile_deleted");
 });
 
 function renderSavedProfile() {
@@ -165,4 +171,8 @@ function isLocalPreview() {
 
 function capitalize(value) {
   return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function track(event, properties = {}) {
+  window.dispatchEvent(new CustomEvent("voicedraft:analytics", { detail: { event, properties } }));
 }

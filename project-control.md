@@ -14,11 +14,12 @@
 |---|---|---|
 | PRD | REVIEW | `../brand-voice-editor-prd.md`; pricing and provider economics remain open |
 | SEO copy freeze | REVIEW | `docs/seo-copy-freeze.md`; price and company identity are provisional |
+| SEO / GEO | LOCAL_READY | `llms.txt`, lastmod sitemap, OG/Twitter cards, WebPage/Organization schema, visible author/freshness signals, About/Contact routes, and answer-first fact blocks pass local checks |
 | Design handoff | REVIEW | `docs/design-handoff.md`; produced without Stitch/Figma account |
 | Frontend | LOCAL_READY | Build, route, link, and SEO automation pass; screenshot QA blocked by host approval failure |
 | Worker AI | REVIEW | Code and API contract pass syntax checks; live account/model test pending |
 | Compliance | REVIEW | Privacy/Terms are MVP drafts, not legal advice |
-| GitHub | PUSH_PENDING | Local `main` is at `3a1a79e235e06ef3b9a7505270c4e92a4ed7e61b`; `origin/main` is still at `d85e8f1dc4359e37d7d5651859d3a5eae8c00a14` because Git Credential Manager could not obtain a GitHub credential |
+| GitHub | PUSH_PENDING | Latest GA4/SEO/GEO changes are committed locally; `origin/main` is one commit behind because Git Credential Manager could not obtain a GitHub credential |
 | Cloudflare | BLOCKED_SETUP | GitHub Action `34683583879` built successfully; Wrangler deploy step skipped because repository secrets are missing |
 | Production URL | REVIEW | `https://brandvoice.space/`; attach the custom domain to the Worker and run post-DNS smoke tests |
 

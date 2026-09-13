@@ -14,8 +14,14 @@ Production site: https://brandvoice.space/
 - Dynamic sitemap, robots, and canonical links at the Worker edge.
 - Privacy, terms, pricing, 404, and noindex application routes.
 - GitHub Actions workflow for automatic Cloudflare deployment from `main`.
+- Optional GA4 analytics with consent controls; events contain product state only, never writing content.
+- Shared OG/Twitter preview card, visible author/freshness signals, and machine-readable `llms.txt` route.
 
 Authentication, billing, cross-device profiles, and durable usage accounting are intentionally deferred.
+
+## Analytics
+
+The default GA4 Measurement ID is `G-GB11M9DGM2` and can be overridden at build time with `VITE_ANALYTICS_ID`. A small consent notice lets visitors allow or decline analytics. Tracked events include page views, sample loading, rewrite submission/success/failure, output copy, and Voice Profile actions. Draft text, output text, writing samples, and freeform context are excluded.
 
 ## Local preview
 

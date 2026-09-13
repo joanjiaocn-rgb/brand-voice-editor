@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">VoiceDraft — AI humanizer for professional writing</title>
+  <desc id="desc">Make AI-assisted emails and LinkedIn posts sound like you.</desc>
+  <rect width="1200" height="630" fill="#f6f4ee"/>
+  <rect x="72" y="72" width="64" height="64" fill="#2d6d8d"/>
+  <path d="M91 109l14-14 13 13-14 14zM87 124l5-10 9 9-10 5z" fill="#fffefa"/>
+  <text x="160" y="119" fill="#14283d" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">VoiceDraft</text>
+  <text x="72" y="282" fill="#14283d" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700">Make AI writing</text>
+  <text x="72" y="366" fill="#14283d" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="700">sound like you.</text>
+  <text x="76" y="438" fill="#5f6c77" font-family="Arial, Helvetica, sans-serif" font-size="28">AI humanizer for professional emails and LinkedIn posts</text>
+  <rect x="72" y="520" width="240" height="8" fill="#d94f30"/>
+  <rect x="328" y="520" width="120" height="8" fill="#14766f"/>
+</svg>

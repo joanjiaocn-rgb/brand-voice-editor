@@ -13,7 +13,9 @@ const publicRoutes = new Set([
   "linkedin-post-rewriter/index.html",
   "pricing/index.html",
   "privacy/index.html",
-  "terms/index.html"
+  "terms/index.html",
+  "about/index.html",
+  "contact/index.html"
 ]);
 
 const files = await walk(dist);
@@ -26,6 +28,12 @@ for (const file of htmlFiles) {
   if (h1Count !== 1) failures.push(`${rel}: expected one H1, found ${h1Count}`);
   if (!/<title>[^<]+<\/title>/.test(html)) failures.push(`${rel}: missing title`);
   if (!html.includes('href="/src/styles.css"')) failures.push(`${rel}: missing stylesheet`);
+  if (!html.includes('src="/src/analytics.js"')) failures.push(`${rel}: missing analytics module`);
+  if (!html.includes('property="og:title"')) failures.push(`${rel}: missing og:title`);
+  if (!html.includes('property="og:image"')) failures.push(`${rel}: missing og:image`);
+  if (!html.includes('name="author"')) failures.push(`${rel}: missing author signal`);
+  if (!html.includes('data-generated-page-schema') || !html.includes('VoiceDraft')) failures.push(`${rel}: missing page schema`);
+  if (publicRoutes.has(rel) && !html.includes("page-meta")) failures.push(`${rel}: missing visible author/freshness signal`);
   if (html.includes("data-lucide")) failures.push(`${rel}: unresolved icon placeholder`);
   if (publicRoutes.has(rel) && !/<meta name="description"/.test(html)) failures.push(`${rel}: missing meta description`);
   if (rel.startsWith("app/") && !/name="robots" content="noindex/.test(html)) failures.push(`${rel}: app route must be noindex`);
@@ -41,7 +49,11 @@ for (const file of htmlFiles) {
 }
 
 const workerSource = await readFile(join(root, "src", "worker.js"), "utf8");
+const analyticsSource = await readFile(join(root, "src", "analytics.js"), "utf8");
+if (!analyticsSource.includes("G-GB11M9DGM2") && !analyticsSource.includes("voicedraft-analytics-id")) failures.push("analytics: missing configurable GA4 ID");
+if (/(?:source_text|rewritten_text|samples|freeform_context)\s*[:=]/.test(analyticsSource)) failures.push("analytics: raw writing field appears in analytics module");
 if (!workerSource.includes("/sitemap.xml")) failures.push("worker: missing sitemap route");
+if (!workerSource.includes("/llms.txt")) failures.push("worker: missing llms.txt route");
 if (!workerSource.includes('rel=\"canonical\"')) failures.push("worker: missing canonical injection");
 if (!workerSource.includes("no-store")) failures.push("worker: API responses must be no-store");
 if (!workerSource.includes('SITE_ORIGIN = "https://brandvoice.space"')) failures.push("worker: production site origin is not configured");
@@ -89,6 +101,10 @@ async function verifySiteOrigin(worker) {
   const sitemapResponse = await worker.fetch(new Request("https://temporary.workers.dev/sitemap.xml"));
   const sitemap = await sitemapResponse.text();
   if (!sitemapResponse.ok || !sitemap.includes("https://brandvoice.space/")) failures.push("worker: sitemap does not use brandvoice.space");
+
+  const llmsResponse = await worker.fetch(new Request("https://temporary.workers.dev/llms.txt"));
+  const llms = await llmsResponse.text();
+  if (!llmsResponse.ok || !llms.includes("AI humanizer") || !llms.includes("https://brandvoice.space/ai-humanizer/")) failures.push("worker: llms.txt is missing key product routes");
 
   const robotsResponse = await worker.fetch(new Request("https://temporary.workers.dev/robots.txt"));
   const robots = await robotsResponse.text();

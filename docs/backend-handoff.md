@@ -29,7 +29,7 @@ Status: NEEDS_REVIEW. The production AI binding is present. A deprecated model c
 ## Security notes
 
 - No secret is committed.
-- Raw writing is omitted from application logs and analytics events.
+- Raw writing is omitted from application logs and analytics events. GA4 is loaded only after the visitor allows optional analytics; events contain route, mode, status, and aggregate counts only.
 - Error logs contain request ID and error message only.
 - The in-memory rate limit is best effort and is not a global quota mechanism.
 - Production needs an account-level quota, Cloudflare edge rate limiting, or persistent usage ledger before broad promotion.

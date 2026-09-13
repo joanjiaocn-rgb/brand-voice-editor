@@ -52,7 +52,10 @@ function initializeRewriteTool(root) {
   updateCount();
 
   input?.addEventListener("input", updateCount);
-  modeButtons.forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
+  modeButtons.forEach((button) => button.addEventListener("click", () => {
+    setMode(button.dataset.mode);
+    track("rewrite_mode_selected", { mode });
+  }));
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
     runRewrite("none");
@@ -78,6 +81,7 @@ function initializeRewriteTool(root) {
         : `I've been thinking a lot about AI writing tools lately, and I wanted to share an insight. The biggest problem with AI writing is not writing. It is context. AI doesn't know what you believe or what you would never say. A good prompt helps one time. A voice profile helps every time. What do you think?`;
       updateCount();
       input.focus();
+      track("sample_loaded", { mode: sampleMode });
     });
   });
 
