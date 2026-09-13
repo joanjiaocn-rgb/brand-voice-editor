@@ -93,6 +93,30 @@ Status: NEEDS_REVIEW. The value proposition and prohibited claims are frozen for
 - Meta: Contact VoiceDraft with product feedback, privacy questions, or support requests.
 - H1: Questions, feedback, or a privacy request
 
+### `/guides/`
+
+- Title: Brand Voice Guides for Clear, Consistent Writing | VoiceDraft
+- Meta: Practical brand voice guides: define your voice, build guidelines, understand tone, learn from examples, and stay consistent across channels.
+- H1: Build a voice people recognize
+- Primary topics: definition, building a voice, voice vs. tone, examples, guidelines, and consistency.
+
+### `/guides/what-is-brand-voice/`
+
+- Title: What Is Brand Voice? Definition and Examples | VoiceDraft
+- H1: What is brand voice?
+
+### `/guides/how-to-build-brand-voice/`
+
+- Title: How to Build a Brand Voice in 5 Steps | VoiceDraft
+- H1: How do you build a brand voice?
+
+### Additional guide routes
+
+- `/guides/brand-voice-vs-tone-of-voice/`
+- `/guides/brand-voice-examples/`
+- `/guides/brand-voice-guidelines/`
+- `/guides/how-to-keep-brand-voice-consistent/`
+
 ## Shared product copy
 
 - Input label: Your draft

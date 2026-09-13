@@ -15,7 +15,14 @@ const publicRoutes = new Set([
   "privacy/index.html",
   "terms/index.html",
   "about/index.html",
-  "contact/index.html"
+  "contact/index.html",
+  "guides/index.html",
+  "guides/what-is-brand-voice/index.html",
+  "guides/how-to-build-brand-voice/index.html",
+  "guides/brand-voice-vs-tone-of-voice/index.html",
+  "guides/brand-voice-examples/index.html",
+  "guides/brand-voice-guidelines/index.html",
+  "guides/how-to-keep-brand-voice-consistent/index.html"
 ]);
 
 const files = await walk(dist);
@@ -36,6 +43,8 @@ for (const file of htmlFiles) {
   if (publicRoutes.has(rel) && !html.includes("page-meta")) failures.push(`${rel}: missing visible author/freshness signal`);
   if (html.includes("data-lucide")) failures.push(`${rel}: unresolved icon placeholder`);
   if (publicRoutes.has(rel) && !/<meta name="description"/.test(html)) failures.push(`${rel}: missing meta description`);
+  if (publicRoutes.has(rel) && !html.includes('data-guide-nav')) failures.push(`${rel}: missing Guides navigation`);
+  if (rel.startsWith("guides/") && rel !== "guides/index.html" && !html.includes('data-guide-article-schema')) failures.push(`${rel}: missing Article schema`);
   if (rel.startsWith("app/") && !/name="robots" content="noindex/.test(html)) failures.push(`${rel}: app route must be noindex`);
 
   const links = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
@@ -104,7 +113,7 @@ async function verifySiteOrigin(worker) {
 
   const llmsResponse = await worker.fetch(new Request("https://temporary.workers.dev/llms.txt"));
   const llms = await llmsResponse.text();
-  if (!llmsResponse.ok || !llms.includes("AI humanizer") || !llms.includes("https://brandvoice.space/ai-humanizer/")) failures.push("worker: llms.txt is missing key product routes");
+  if (!llmsResponse.ok || !llms.includes("AI humanizer") || !llms.includes("https://brandvoice.space/ai-humanizer/") || !llms.includes("https://brandvoice.space/guides/")) failures.push("worker: llms.txt is missing key product routes");
 
   const robotsResponse = await worker.fetch(new Request("https://temporary.workers.dev/robots.txt"));
   const robots = await robotsResponse.text();

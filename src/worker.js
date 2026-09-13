@@ -11,7 +11,14 @@ const PUBLIC_ROUTES = new Set([
   "/privacy/",
   "/terms/",
   "/about/",
-  "/contact/"
+  "/contact/",
+  "/guides/",
+  "/guides/what-is-brand-voice/",
+  "/guides/how-to-build-brand-voice/",
+  "/guides/brand-voice-vs-tone-of-voice/",
+  "/guides/brand-voice-examples/",
+  "/guides/brand-voice-guidelines/",
+  "/guides/how-to-keep-brand-voice-consistent/"
 ]);
 
 export default {
@@ -300,10 +307,15 @@ function json(data, status = 200) {
 function sitemap(origin) {
   const paths = [...PUBLIC_ROUTES];
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map((path) => `  <url><loc>${origin}${path}</loc><lastmod>2026-09-13</lastmod></url>`).join("\n")}\n</urlset>`;
-  return new Response(body, { headers: { "content-type": "application/xml; charset=utf-8" } });
+  return new Response(body.replaceAll("2026-09-13", "2026-09-14"), { headers: { "content-type": "application/xml; charset=utf-8" } });
 }
 
 function llmsText(origin) {
+  const productText = llmsProductText(origin).replace("Last updated: 2026-09-13", "Last updated: 2026-09-14");
+  return `${productText}\n## Brand voice guides\n- All guides: ${origin}/guides/\n- What is brand voice?: ${origin}/guides/what-is-brand-voice/\n- How to build a brand voice: ${origin}/guides/how-to-build-brand-voice/\n- Brand voice vs. tone: ${origin}/guides/brand-voice-vs-tone-of-voice/\n- Brand voice examples: ${origin}/guides/brand-voice-examples/\n- Brand voice guidelines: ${origin}/guides/brand-voice-guidelines/\n- Brand voice consistency: ${origin}/guides/how-to-keep-brand-voice-consistent/\n`;
+}
+
+function llmsProductText(origin) {
   return `# VoiceDraft\n\n> AI humanizer for professional emails and LinkedIn posts.\n\n## What it does\n- Rewrites AI-assisted drafts so they sound clear, personal, and ready to send.\n- Preserves meaning, names, numbers, dates, links, commitments, and point of view.\n- Offers a reusable Voice Profile stored locally in the visitor's browser.\n\n## Main pages\n- Home: ${origin}/\n- AI humanizer: ${origin}/ai-humanizer/\n- Email humanizer: ${origin}/email-rewriter/\n- LinkedIn post humanizer: ${origin}/linkedin-post-rewriter/\n- Pricing: ${origin}/pricing/\n- Privacy: ${origin}/privacy/\n- Terms: ${origin}/terms/\n- About: ${origin}/about/\n- Contact: ${origin}/contact/\n\n## Important limits\nVoiceDraft does not promise to bypass AI detectors, make text undetectable, or guarantee engagement or business outcomes. Review business-critical writing before sending.\n\n## Freshness\nLast updated: 2026-09-13\n`;
 }
 

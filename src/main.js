@@ -9,6 +9,43 @@ refreshIcons();
 const tool = document.querySelector("[data-rewrite-tool]");
 const menuButton = document.querySelector("[data-menu-button]");
 const menu = document.querySelector("[data-mobile-menu]");
+const guideNavigations = [...document.querySelectorAll("[data-guide-nav]")];
+
+guideNavigations.forEach((navigation) => {
+  const trigger = navigation.querySelector("[data-guide-trigger]");
+  if (!trigger) return;
+
+  const setOpen = (open) => {
+    navigation.toggleAttribute("data-open", open);
+    trigger.setAttribute("aria-expanded", String(open));
+  };
+
+  trigger.addEventListener("click", () => setOpen(!navigation.hasAttribute("data-open")));
+  navigation.addEventListener("pointerenter", () => {
+    if (window.matchMedia("(hover: hover)").matches) setOpen(true);
+  });
+  navigation.addEventListener("pointerleave", () => {
+    if (window.matchMedia("(hover: hover)").matches) setOpen(false);
+  });
+  trigger.addEventListener("focus", () => {
+    window.requestAnimationFrame(() => {
+      if (trigger.matches(":focus-visible")) setOpen(true);
+    });
+  });
+  navigation.addEventListener("focusout", () => {
+    window.setTimeout(() => {
+      if (!navigation.contains(document.activeElement)) setOpen(false);
+    });
+  });
+});
+
+document.addEventListener("pointerdown", (event) => {
+  guideNavigations.forEach((navigation) => {
+    if (navigation.contains(event.target)) return;
+    navigation.removeAttribute("data-open");
+    navigation.querySelector("[data-guide-trigger]")?.setAttribute("aria-expanded", "false");
+  });
+});
 
 menuButton?.addEventListener("click", () => {
   const open = menuButton.getAttribute("aria-expanded") !== "true";
@@ -19,10 +56,19 @@ menuButton?.addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && menu?.hasAttribute("data-open")) {
-    menu.removeAttribute("data-open");
-    menuButton?.setAttribute("aria-expanded", "false");
+  if (event.key !== "Escape") return;
+  const openGuide = guideNavigations.find((navigation) => navigation.hasAttribute("data-open"));
+  if (openGuide) {
+    openGuide.removeAttribute("data-open");
+    const trigger = openGuide.querySelector("[data-guide-trigger]");
+    trigger?.setAttribute("aria-expanded", "false");
+    trigger?.focus();
+    return;
   }
+  if (!menu?.hasAttribute("data-open")) return;
+  menu.removeAttribute("data-open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  menuButton?.focus();
 });
 
 if (tool) initializeRewriteTool(tool);
